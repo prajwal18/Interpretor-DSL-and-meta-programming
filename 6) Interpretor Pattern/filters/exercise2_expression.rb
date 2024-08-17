@@ -15,28 +15,28 @@ class Expression
   def |(other)
     Or.new(self, other)
   end
+end
 
-  def exclude(expression)
-    Not.new(expression)
-  end
+def exclude(expression)
+  Not.new(expression)
+end
 
-  def writable
-    Writable.new
-  end
+def writable
+  Writable.new
+end
 
-  def matches(pattern)
-    FileName.new(pattern)
-  end
+def matches(pattern)
+  FileName.new(pattern)
+end
 
-  def >(other)
-    Bigger.new(other)
-  end
+def bigger(other)
+  Bigger.new(other)
+end
 
-  def <(other)
-    Not.new(Bigger.new(other))
-  end
+def smaller(other)
+  Not.new(Bigger.new(other))
+end
 
-  def all
-    All.new
-  end
+def all
+  All.new
 end
