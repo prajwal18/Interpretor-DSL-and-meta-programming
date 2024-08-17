@@ -1,0 +1,36 @@
+#
+# Directory to scour for files I want to backup
+#
+dir = '../playground_directory/source'
+
+#
+# Directory where I want to perform the backup
+#
+backup_dir = '../playground_directory/backup'
+
+#
+# Only music files
+#
+music_only = matches('*.mp3')
+
+#
+# Only md or html files
+#
+md_html_only = matches('*.md') | matches('*.html')
+
+
+Backup.new do |b|
+  b.backup dir, music_only
+  b.to backup_dir, 'music'
+  b.interval 2 
+end
+
+
+Backup.new do |b|
+  b.backup dir, md_html_only
+  b.to backup_dir, 'docs'
+  b.interval 3
+end
+
+
+# Note: the interval in the above two backup are defined in minutes
